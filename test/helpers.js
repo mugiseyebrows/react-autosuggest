@@ -8,7 +8,7 @@ chai.use(sinonChai);
 
 const clock = sinon.useFakeTimers();
 
-let app, container, input, suggestionsContainer, clearButton;
+let app, container, input, suggestionsContainer, clearButton, textarea;
 let eventsArray = [];
 
 export const { tick } = clock;
@@ -36,6 +36,7 @@ export const init = application => {
     app,
     'react-autosuggest__suggestions-container'
   );
+  textarea = TestUtils.findRenderedDOMComponentWithTag(app, 'textarea');
   clearButton = TestUtils.scryRenderedDOMComponentsWithTag(app, 'button')[0];
 };
 
@@ -197,6 +198,24 @@ export const clickSuggestionsContainer = () => {
   mouseDownDocument(suggestionsContainer);
   blurInput();
   focusInput();
+};
+
+export const clickSuggestionsContainerAndDontFocus = () => {
+  mouseDownDocument(suggestionsContainer);
+};
+
+export const clickTextarea = () => {
+  mouseDownDocument(textarea);
+  blurTextArea();
+  focusTextArea();
+};
+
+export const focusTextArea = () => {
+  Simulate.focus(textarea);
+};
+
+export const blurTextArea = () => {
+  Simulate.blur(textarea);
 };
 
 export const focusInput = () => {
