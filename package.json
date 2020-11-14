@@ -1,6 +1,6 @@
 {
   "name": "react-autosuggest-tab",
-  "version": "9.3.4",
+  "version": "9.3.5",
   "description": "WAI-ARIA compliant React autosuggest component",
   "main": "dist/index.js",
   "repository": {
