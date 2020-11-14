@@ -617,7 +617,7 @@ export default class Autosuggest extends Component {
               break;
             }
             event.preventDefault();
-            // no break, tab act like enter if commitOnTab
+            // no break, tab acts like enter if commitOnTab
           }
 
           // Enter
