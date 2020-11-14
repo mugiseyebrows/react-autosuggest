@@ -53,6 +53,7 @@ export default class Autosuggest extends Component {
     },
     shouldRenderSuggestions: PropTypes.func,
     alwaysRenderSuggestions: PropTypes.bool,
+    commitOnTab: PropTypes.bool,
     multiSection: PropTypes.bool,
     renderSectionTitle: (props, propName) => {
       const renderSectionTitle = props[propName];
@@ -92,6 +93,7 @@ export default class Autosuggest extends Component {
     focusInputOnSuggestionClick: true,
     highlightFirstSuggestion: false,
     theme: defaultTheme,
+    commitOnTab: false,
     id: '1'
   };
 
@@ -475,7 +477,8 @@ export default class Autosuggest extends Component {
       theme,
       getSuggestionValue,
       alwaysRenderSuggestions,
-      highlightFirstSuggestion
+      highlightFirstSuggestion,
+      commitOnTab
     } = this.props;
     const {
       isFocused,
@@ -607,6 +610,15 @@ export default class Autosuggest extends Component {
             });
 
             break;
+
+          // Tab
+          case 9: {
+            if (!commitOnTab) {
+              break;
+            }
+            event.preventDefault();
+            // no break, tab act like enter if commitOnTab
+          }
 
           // Enter
           case 13: {
